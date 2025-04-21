@@ -4,6 +4,9 @@ from voluntario.models import Voluntario
 
 # Create your models here.
 
+#COMMIT RECADO: banco de dados foi criado pelo gabryel, quando fui subir as configurações de admin acabei errando alguns comandos e acabei excluindo
+#historico de commits, só haviam 2 commits ate entao, a criação do banco e as configurações gitignore apenas
+
 class Evento (models.Model):
     nome = models.CharField("Nome do Evento", max_length = 50)
     descricao = models.CharField("Descrição",max_length = 100)
