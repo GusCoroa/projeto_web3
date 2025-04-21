@@ -24,6 +24,6 @@ class CustomUserAdmin(UserAdmin):
             "all": ("css/custom_admin.css",)
         }
 
-# Substitui o User padrão pelo seu
+# Substitui o User padrão pelo seu TESTEEEEEEEE
 admin.site.unregister(User)
 admin.site.register(User, CustomUserAdmin)
