@@ -19,7 +19,7 @@ from django.urls import path
 from django.views.generic import TemplateView
 from django.conf import settings
 from django.conf.urls.static import static
-
+from voluntario import views
 
 urlpatterns = [
     #admin
@@ -27,7 +27,8 @@ urlpatterns = [
     #index
     path('', TemplateView.as_view(template_name='index.html'), name='home'), 
     # formulario
-    path('formulario/', TemplateView.as_view(template_name='formulario.html'), name='formulario'),  
+    # path('formulario/', TemplateView.as_view(template_name='formulario.html'), name='formulario'),  
+    path('formulario/', views.voluntario, name='cadastro_voluntarios'),
 ]
 
 # desenvolvimento
