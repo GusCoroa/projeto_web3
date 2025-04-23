@@ -4,19 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Minha Página</title>
-    <link rel="stylesheet" href="{% static 'bd_web3/css/style.css' %}">
-    <style>
-    .alerta {
-        background-color:rgb(250, 208, 212);
-        color:rgb(155, 40, 51);
-        padding: 10px;
-        margin: 10px 0;
-        border: 1px solidrgb(250, 191, 197);
-        border-radius: 5px;
-    }
-</style>
+    <!-- links de arquivo -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/formulario.css' %}">
 </head>
 <body>
+    <!-- Formulario--------------------------------------------------------- -->
     <h1>Termine de criar sua conta:</h1>
     <h4>Digite suas informações para concluirmos seu cadastro</h4>
 
@@ -48,45 +41,14 @@
 
         <input type="submit" value="Cadastre-se">
     </form>
-    {% if mensagem %}
+    {% if mensagem != "Cadastro realizado com sucesso!" %}
     <div class="alerta">
         <p>{{ mensagem }}</p>
     </div>
+    {% else %}
+    <div class="sucesso">
+        <p>{{ mensagem }}</p>
     {% endif %}
-    <script>
-        function CPF(input) {
-            let value = input.value.replace(/\D/g, ''); 
-            value = value.slice(0, 11);
-    
-            value = value.replace(/(\d{3})(\d)/, '$1.$2');
-            value = value.replace(/(\d{3})(\d)/, '$1.$2');
-            value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
-    
-            input.value = value;
-        }
-    
-        function TEL(input) {
-            let value = input.value.replace(/\D/g, '');
-            value = value.slice(0, 11); 
-    
-            value = value.replace(/^(\d{2})(\d)/g, '($1) $2');
-            value = value.replace(/(\d{5})(\d)/, '$1-$2');
-    
-            input.value = value;
-        }
-
-        function EMAIL(input){
-            const email = input.value;
-            const arroba = email.indexOf('@');
-            const ponto = email.lastIndexOf('.');
-            
-            if(arroba < 1 || ponto < arroba + 2 || ponto === email.length - 1){
-                input.setCustomValidity("Digite um e-mail válido.");
-            }
-            else {
-                input.setCustomValidity("");
-            }
-        }
-    </script>
+    <script src="{% static 'js/script.js'%}"></script>
 </body>
 </html>
