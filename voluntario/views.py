@@ -14,7 +14,7 @@ def voluntario(request):
         cpf = request.POST['cpf']
         dataNascimento = request.POST['dataNascimento']
         sexo = request.POST['sexo']
-        sexo = True if sexo.lower() == 'masculino' else False
+        # sexo = True if sexo.lower() == 'masculino' else False
         
         if Voluntario.objects.filter(cpf=cpf).exists():
             return render(request, 'formulario.html', {'mensagem': 'CPF já cadastrado.'})
