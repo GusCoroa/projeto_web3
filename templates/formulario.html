@@ -4,16 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Minha Página</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'bd_web3/css/style.css' %}">
+    <style>
+    .alerta {
+        background-color:rgb(250, 208, 212);
+        color:rgb(155, 40, 51);
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solidrgb(250, 191, 197);
+        border-radius: 5px;
+    }
+</style>
 </head>
 <body>
     <h1>Termine de criar sua conta:</h1>
     <h4>Digite suas informações para concluirmos seu cadastro</h4>
 
-    <form action={% url 'cadastro_voluntarios' %} method="post">
+    <form method="post">
         {% csrf_token %}
 
-        <label for="fullname">Nome completo:</label>
+    <label for="fullname">Nome completo:</label>
         <input type="text" id="fullname" name="fullname" placeholder="Nome completo" required><br><br>
 
         <label for="email">E-mail:</label>
@@ -37,8 +47,12 @@
         </select><br><br>
 
         <input type="submit" value="Cadastre-se">
-
     </form>
+    {% if mensagem %}
+    <div class="alerta">
+        <p>{{ mensagem }}</p>
+    </div>
+    {% endif %}
     <script>
         function CPF(input) {
             let value = input.value.replace(/\D/g, ''); 
