@@ -1,7 +1,5 @@
-from django.shortcuts import render
-
 # Create your views here.
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Voluntario
 
 def voluntario(request):
@@ -15,5 +13,5 @@ def voluntario(request):
         sexo = True if sexo.lower() == 'masculino' else False
         cadastro_voluntario = Voluntario.objects.create(nome = fullname, email = email, telefone = tel, cpf = cpf, dataNascimento = dataNascimento, sexo = sexo)
 
-        return redirect(request, 'home')
+        return redirect('home')
     return render(request, 'formulario.html')
