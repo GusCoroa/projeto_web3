@@ -33,7 +33,7 @@
 
         <label for="sexo">Gênero:</llabel><br><br>
         <select id="sexo" name="sexo" required>
-            <option value=" ">Selecione</option>
+            <option value="">Selecione</option>
             <option value="masculino">Masculino</option>
             <option value="feminino">Feminino</option>
             <option value="outro">Outro</option>
@@ -41,14 +41,17 @@
 
         <input type="submit" value="Cadastre-se">
     </form>
-    {% if mensagem != "Cadastro realizado com sucesso!" %}
-    <div class="alerta">
-        <p>{{ mensagem }}</p>
-    </div>
-    {% else %}
-    <div class="sucesso">
-        <p>{{ mensagem }}</p>
+    {%if mensagem%}
+        {% if mensagem != "Cadastro realizado com sucesso!" %}
+        <div class="alerta">
+            <p>{{ mensagem }}</p>
+        </div>
+        {% else %}
+        <div class="sucesso">
+            <p>{{ mensagem }}</p>
+        {% endif %}
     {% endif %}
+    
     <script src="{% static 'js/script.js'%}"></script>
 </body>
 </html>

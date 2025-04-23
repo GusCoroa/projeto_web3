@@ -10,5 +10,5 @@ class VoluntarioFormulario(forms.ModelForm):
     def checkCpf(self):
         cpf = self.cleaned_data['cpf']
         if Voluntario.objects.filter(cpf=cpf).exists():
-            raiseValidationError("CPF já cadastrado.")
+            raise ValidationError("CPF já cadastrado.")
         return cpf
