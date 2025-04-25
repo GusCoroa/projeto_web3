@@ -7,6 +7,7 @@
     <title>Federação Fluminense de Capoeira</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsividade.css' %}">
 </head>
 <body>
 
@@ -22,22 +23,22 @@
         </div>
         <nav id="menuHeader">
             <ul>
-                <li><a href="#home">HOME</a></li>
-                <li><a href="#historia">NOSSA HISTORIA</a></li>
+                <li><a href="#menu">HOME</a></li>
+                <li><a href="#historia">NOSSA HISTÓRIA</a></li>
                 <li><a href="#missao">MISSÃO</a></li>
-                <li><a href="portal.html">ADMINISTRATIVO</a></li>
-                <li><a href="voluntario.html" class="voluntario-botao">SEJA UM VOLUNTÁRIO</a></li>
+                <li><a href="{% url 'admin:login' %}">ADMINISTRATIVO</a></li>
+                <li><a href="{% url 'voluntario' %}" class="voluntario-botao">SEJA UM VOLUNTÁRIO</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- CAIXA DA AGENDA -->
-    <section id="home" class="hero-section">
+    <!-- CAIXA DOS EVENTOS -->
+    <section id="menu" class="hero-section">
         <div class="container">
             <div class="agenda-caixa">
                 <h2>Nossos eventos!</h2>
                 <p>Saiba mais sobre nossos eventos!</p>
-                <a href="#agenda" class="agenda-botao">clique aqui!</a>
+                <a href="{% url 'eventos' %}" class="agenda-botao">clique aqui!</a>
             </div>
         </div>
     </section>
@@ -166,11 +167,11 @@
         <div class="footer-coluna">
             <h3>MAPA DO SITE</h3>
             <ul class="mapa-site">
-                <li><a href="#home">Menu</a></li>
-                <li><a href="portal.html">Administrativo</a></li>
-                <li><a href="#agenda">Eventos</a></li>
-                <li><a href="voluntario.html">Trabalhe Conosco</a></li>
-                <li><a href="#">Política de Privacidade</a></li>
+                <li><a href="#menu">Menu</a></li>    <!-- {% url 'home' %} -->
+                <li><a href="{% url 'admin:login' %}">Administrativo</a></li>
+                <li><a href="{% url 'eventos' %}">Eventos</a></li>
+                <li><a href="{% url 'voluntario' %}">Trabalhe Conosco</a></li>
+                <li><a href="{% url 'politica' %}">Política de Privacidade</a></li>
             </ul>
             <br>
             <h3>REDE SOCIAL</h3>

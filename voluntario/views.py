@@ -3,6 +3,16 @@ from .forms import VoluntarioFormulario
 from .models import  Voluntario
 from django.db import IntegrityError
 import logging
+from django.shortcuts import render
+
+def pagina_voluntario(request):
+    return render(request, 'voluntario.html')
+
+def eventos(request):
+    return render(request, 'eventos.html')
+
+def politica(request):
+    return render(request, 'politica.html')
 
 logger = logging.getLogger(__name__)
 

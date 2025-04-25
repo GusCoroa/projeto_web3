@@ -30,14 +30,19 @@ urlpatterns = [
     path('accounts/password_reset/done/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),
     path('accounts/reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
     path('accounts/reset/done/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
-    #index
-    path('', TemplateView.as_view(template_name='index.html'), name='home'), 
+    # Menu
+    path('', TemplateView.as_view(template_name='menu.html'), name='home'), 
     # formulario
     # path('formulario/', TemplateView.as_view(template_name='formulario.html'), name='formulario'),  
     path('formulario/', views.voluntario, name='cadastro_voluntarios'),
+    # Voluntario
+    path('voluntario/', views.pagina_voluntario, name='voluntario'),
+    # Eventos
+    path('eventos/', views.eventos, name='eventos'),
+    # Politica
+    path('politica/', views.politica, name='politica'),
 ]
 
 # desenvolvimento
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS[0])
-
