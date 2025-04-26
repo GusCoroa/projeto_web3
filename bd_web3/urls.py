@@ -33,9 +33,6 @@ urlpatterns = [
     # Menu
     path('', TemplateView.as_view(template_name='menu.html'), name='home'), 
     # formulario
-    # path('formulario/', TemplateView.as_view(template_name='formulario.html'), name='formulario'),  
-    path('formulario/', views.voluntario, name='cadastro_voluntarios'),
-    # Voluntario
     path('voluntario/', views.pagina_voluntario, name='voluntario'),
     # Eventos
     path('eventos/', views.eventos, name='eventos'),
