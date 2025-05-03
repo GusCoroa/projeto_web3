@@ -30,3 +30,12 @@ class Evento (models.Model):
 
     def __str__(self):
         return self.nome
+
+class Post(models.Model):
+    titulo = models.CharField(max_length=50)
+    legenda = models.TextField()
+    imagem = models.ImageField(upload_to='posts/')
+    criado_em = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.titulo
