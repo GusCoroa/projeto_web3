@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.views.generic import TemplateView
 from django.conf import settings
 from django.conf.urls.static import static
@@ -33,16 +33,17 @@ urlpatterns = [
     # Menu
     path('', TemplateView.as_view(template_name='menu.html'), name='home'), 
     # formulario
-    # path('formulario/', TemplateView.as_view(template_name='formulario.html'), name='formulario'),  
-    path('formulario/', views.voluntario, name='cadastro_voluntarios'),
-    # Voluntario
     path('voluntario/', views.pagina_voluntario, name='voluntario'),
     # Eventos
     path('eventos/', views.eventos, name='eventos'),
     # Politica
     path('politica/', views.politica, name='politica'),
+    # Pagina de postagens
+    path('posts/', include('evento.urls')),   
 ]
 
 # desenvolvimento
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS[0])
+# Para imagens
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
