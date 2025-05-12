@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -5,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Federação Fluminense de Capoeira</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link rel="stylesheet" href="{% static 'inicio.css' %}">
+  <link rel="stylesheet" href="{% static 'css/inicio.css' %}">
 </head>
 <body>
 
@@ -14,7 +15,7 @@
     <header class="site-header">
         <div class="container">
           <div class="logo-nome">
-            <img class="logo" src="{% static 'logoheader.png' %}" alt="Logo">
+            <img class="logo" src="{% static 'Imagens/logoheader.png' %}" alt="Logo">
             <h1 class="nome">FEDERAÇÃO <br> FLUMINENSE <br> DE CAPOEIRA</h1>
           </div>
           <nav class="nav">
@@ -29,7 +30,7 @@
       </header>
 
     <div class="agenda">
-        <img src="fundoeventos.png" id="agenda">
+        <img src="{% static 'Imagens/fundoeventos.png' %}" id="agenda">
         <div class="textoebotao">
             <h2>Nossos eventos!</h2>
             <p>Saiba mais sobre nossos eventos!</p>
@@ -97,7 +98,7 @@
     <h1 id="nossahistoria">NOSSA HISTÓRIA</h1>
 
     <div class="bloco-esquerda">
-        <img src="capoeiraesquerda.svg" class="imagem">
+        <img src="{% static 'Imagens/capoeiraesquerda.svg' %}" class="imagem">
         <div class="fundotexto fundotexto1">
           <h3>A Federação Fluminense de Capoeira (FFC) foi fundada em 29 de maio de 1999, na cidade de São Gonçalo, Rio de Janeiro, 
             pelo renomado Mestre e Doutor Carmelindo, com o objetivo de preservar, promover e expandir a prática da capoeira no 
@@ -136,7 +137,7 @@
             contínuo, no qual a capoeira seja vista não apenas como uma prática esportiva, mas como um caminho para a cidadania e o empoderamento 
             individual e coletivo.</h3>
         </div>
-        <img src="capoeiradireita.svg" class="imagem">
+        <img src="{% static 'Imagens/capoeiradireita.svg' %}" class="imagem">
     </div>
 </div>
 
