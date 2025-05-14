@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Minha Página</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link rel="stylesheet" href="iniciosemdjango.css">
+  <link rel="stylesheet" href="{% static 'iniciosemdjango.css' %}">
 </head>
 <body>
 
@@ -14,27 +14,27 @@
     <header class="site-header">
         <div class="container">
           <div class="logo-nome">
-            <img class="logo" src="logoheader.png" alt="Logo">
+            <img class="logo" src="{% static 'logoheader.png' %}" alt="Logo">
             <h1 class="nome">FEDERAÇÃO <br> FLUMINENSE <br> DE CAPOEIRA</h1>
           </div>
           <nav class="nav">
             <ul>
-              <li><a id="header" href="#">Início</a></li>
+              <li><a id="header" href="inicio.html">Início</a></li>
               <li><a id="header" href="#nossahistoria">Nossa História</a></li>
               <li><a id="header" href="#missaoevalores">Missão</a></li>
-              <li><a href="postagenssemdjango.html">Postagens</a></li>
-              <li><a id="header-a" href="#">Voluntarie-se</a></li>
+              <li><a href="postagens.html">Postagens</a></li>
+              <li><a id="header-a" href="{% url 'voluntario' %}">Voluntarie-se</a></li>
             </ul>
           </nav>
         </div>
       </header>
 
     <div class="agenda">
-        <img src="fundoeventos.png" id="agenda">
+        <img src="{% static 'Imagens/fundoeventos.png' %}" id="agenda">
         <div class="textoebotao">
             <h2>Nossos eventos!</h2>
             <p>Saiba mais sobre nossos eventos!</p>
-            <a href="eventos" class="textobotao">clique aqui!</a>
+            <a href="{% url 'eventos' %}" class="textobotao">clique aqui!</a>
         </div>
     </div>
     
@@ -95,9 +95,9 @@
 
 <div class="carousel">
   <div class="slides">
-    <img src="CAPOEIRA-POSTAGENS1.jpg" class="slide ativo" alt="Slide 1">
-    <img src="CAPOEIRACARROSSELIMG.webp" class="slide" alt="Slide 2">
-    <img src="CAPOEIRA-POSTAGENS1.jpg" class="slide" alt="Slide 3">
+    <img src="{% static 'CAPOEIRA-POSTAGENS1.jpg' %}" class="slide ativo" alt="Slide 1">
+    <img src="{% 'CAPOEIRACARROSSELIMG.webp' %}" class="slide" alt="Slide 2">
+    <img src="{% static 'CAPOEIRA-POSTAGENS1.jpg' %}" class="slide" alt="Slide 3">
   </div>
   <div class="indicators">
     <span class="indicator active"></span>
@@ -111,7 +111,7 @@
     <h1 id="nossahistoria">NOSSA HISTÓRIA</h1>
 
     <div class="bloco-esquerda">
-        <img src="capoeiraesquerda.svg" class="imagem">
+        <img src="{% static 'Imagens/capoeiraesquerda.svg' %}"  class="imagem">
         <div class="fundotexto fundotexto1">
           <h3>A Federação Fluminense de Capoeira (FFC) foi fundada em 29 de maio de 1999, na cidade de São Gonçalo, Rio de Janeiro, 
             pelo renomado Mestre e Doutor Carmelindo, com o objetivo de preservar, promover e expandir a prática da capoeira no 
@@ -150,7 +150,7 @@
             contínuo, no qual a capoeira seja vista não apenas como uma prática esportiva, mas como um caminho para a cidadania e o empoderamento 
             individual e coletivo.</h3>
         </div>
-        <img src="capoeiradireita.svg" class="imagem">
+        <img src="{% static 'Imagens/capoeiradireita.svg' %}" class="imagem">
     </div>
 </div>
 
@@ -190,10 +190,10 @@
                 <li><a href="#nossa-historia">Nossa Historia</a></li>
                 <li><a href="#missao">Missão</a></li>    
                 <li><a href="postagens.html">Postagens</a></li>
-                <li><a href="eventos">Eventos</a></li>
-                <li><a href="voluntario">Voluntarie-se</a></li>
+                <li><a href="{% url 'eventos' %}">Eventos</a></li>
+                <li><a href="{% url 'voluntario' %}">Voluntarie-se</a></li>
                 <li><a href="#" id="abrir-modal">Receber Novidades</a></li>
-                <li><a href="politica">Política de Privacidade</a></li>
+                <li><a href="{% url 'politica' %}">Política de Privacidade</a></li>
                 <li><a href="{% url 'admin:login' %}">Administrativo</a></li>
             </ul>
         </div> 
