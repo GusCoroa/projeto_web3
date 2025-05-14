@@ -506,10 +506,13 @@ dialog {
   border-top-right-radius: 20px;
   font-family: 'HK Grotesk', sans-serif;
   display: flex;
-  padding: 20px;
-  padding-top: 20px;
-  padding-bottom: 30px;
+  justify-content: center;     
+  align-items: center;         
+  gap: 50px;                   
+  padding: 40px 20px;          
   color: #fbfbf8;
+  flex-wrap: wrap;             
+  text-align: center;         
 }
 
 .logo-footer{
@@ -527,7 +530,7 @@ dialog {
 }
 
 .footer-coluna2{
-  margin-right: 20%;
+  /* margin-right: 20%; */
   margin-left: 5%;
   font-size: 14px;
   padding-top: 7%;
