@@ -4,71 +4,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eventos - Federação Fluminense de Capoeira</title>
+    <title>FFC - EVENTOS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/responsividade.css' %}">
     <link rel="stylesheet" href="{% static 'css/eventos.css' %}">
+    <link rel="stylesheet" href="{% static 'css/postagens.css' %}" />
 </head>
 <body>
-
-<header id="header">
-    <div class="logo">
-        <img src="{% static 'Imagens/Logo.jpg' %}" alt="Logo" width="110" height="110">
-        <h1>FEDERAÇÃO<br>FLUMINENSE<br>DE CAPOEIRA</h1>
+        {% comment %} Cabeçalho {% endcomment %}
+        <header id="header">
+            <div class="logo">
+                <img src="{% static 'Imagens/Logo.jpg' %}" alt="Logo" width="110" height="110">
+                <h1>FEDERAÇÃO<br>FLUMINENSE<br>DE CAPOEIRA</h1>
+            </div>
+            <div class="menu-toggle" id="menuClique">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav id="menuHeader">
+                <ul>
+                    <li><a href="{% url 'home' %}">HOME</a></li>
+                    <li><a href="{% url 'eventos' %}">EVENTOS</a></li>
+                    <li><a href="{% url 'admin:login' %}">ADMINISTRATIVO</a></li>
+                    <li><a href="{% url 'voluntario' %}" class="voluntario-botao">SEJA UM VOLUNTÁRIO</a></li>
+                </ul>
+            </nav>
+        </header>
+      <div class="titulo">NOSSAS POSTAGENS</div>
+    
+      <div class="cards-coluna">
+        
+        {% for post in posts %}
+        <div class="card1">
+          <div class="post-author">
+                <img src="{% static 'Imagens/Logo.jpg' %}" alt="Avatar" class="post-avatar">
+                <span class="author-name">Federação Fluminense de Capoeira</span>
+          </div>
+            <div class="img1">
+              <img src="{{ post.imagem.url }}" class="img-card" alt="{{ post.titulo }}">
+            </div>
+            <div class="texto-card1">
+              <h2>{{ post.titulo }}</h2>
+                <p class="texto-expansivel">{{ post.legenda }}</p>
+                <button class="btn-ver-mais" onclick="expandirTexto(this)">Ver mais</button>
+            </div>
+          </div>
+          {% endfor %}
+    
     </div>
-    <div class="menu-toggle" id="menuClique">
-        <i class="fas fa-bars"></i>
-    </div>
-    <nav id="menuHeader">
-        <ul>
-            <li><a href="{% url 'home' %}">HOME</a></li>
-            <li><a href="{% url 'eventos' %}">EVENTOS</a></li>
-            <li><a href="{% url 'admin:login' %}">ADMINISTRATIVO</a></li>
-            <li><a href="{% url 'voluntario' %}" class="voluntario-botao">SEJA UM VOLUNTÁRIO</a></li>
-        </ul>
-    </nav>
-</header>
-
-<main class="container"> 
-    <h2>Eventos da FFC</h2>
-    <p>Aqui você encontrará informações sobre nossos próximos eventos, rodas, oficinas e festivais!</p>
-</main>
-
-<footer>
-    <div class="logo2">
-        <img src="{% static 'Imagens/Logo2.jpg' %}" alt="Logo" width="85" height="80">
-        <h1>FEDERAÇÃO FLUMINENSE DE CAPOEIRA</h1>
-    </div>
-    <div class="informacoes-footer">
-        <div class="footer-coluna">
-            <h3>UNIDADE CAIO MARTINS</h3>
-            <p>Rua Presidente Backer, Santa Rosa<br>Estádio Caio Martins<br>CEP: 24220-040<br>Niterói • RJ<br>CNPJ: 03.310.237/0001-67</p>
-            <br>
-            <h3>CONTATO</h3>
-            <p>(21) 98928-3942</p>
-            <p>(21) 92711-1366</p>
-            <p>federacaofluminensecapoeira@gmail.com</p>
-            <p>professorsapao@hotmail.com</p>
+    
+     <!-- FOOTER -->
+    
+    <div class="footer-superior">
+        <div class="texto-footer-superior">
+            <p>
+              ACOMPANHE NOSSA REDE SOCIAL 
+              <i class="fa-solid fa-right-long fa-lg" style="color: #fbfbf8;"></i>
+              <a href="https://www.facebook.com/groups/583756710646331/" target="_blank">
+                <i class="fa-brands fa-facebook fa-2xl" style="color: #fbfbf8;"></i>
+              </a>
+            </p>
+          </div>
+          
+        <div class="footer-inferior">
+            <div class="footer-coluna1"> 
+                <img class="logo-footer" src="logoheader.png" alt="Logo">
+                <h3>UNIDADE ALCÂNTARA</h3>
+                <h6>R. Manoel João Gonçalves, 198 - Sl.403 - Raul Veiga, São Gonçalo - RJ, 24711-080<br>CNPJ: 03.310.237/0001-67</h6>
+                <br>
+                <h3>UNIDADE CAIO MARTINS</h3>
+                <h6>R. Pres. Backer, S/N - Icaraí, Niterói - RJ, 24220-045<br>CNPJ: 03.310.237/0001-67</h6>
+                <br>
+                <h3>CONTATO</h3>
+                <h6>(21) 98928-3942</h6>
+                <h6>(21) 92711-1366</h6>
+                <h6>federacaofluminensecapoeira@gmail.com</h6>
+                <h6>professorsapao@hotmail.com</h6>
+            </div>
+            <div class="footer-coluna2">
+                <h3 id="mapadosite">MAPA DO SITE</h3>
+                <br>
+                <ul class="mapa-site">
+                    <li><a href="inicio.html">Menu</a></li>
+                    <li><a href="#nossa-historia">Nossa Historia</a></li>
+                    <li><a href="#missao">Missão</a></li>    
+                    <li><a href="postagens.html">Postagens</a></li>
+                    <li><a href="eventos">Eventos</a></li>
+                    <li><a href="voluntario">Voluntarie-se</a></li>
+                    <li><a href="#" id="abrir-modal">Receber Novidades</a></li>
+                    <li><a href="politica">Política de Privacidade</a></li>
+                    <li><a href="{% url 'admin:login' %}">Administrativo</a></li>
+                </ul>
+            </div> 
+            <div class="mapas">
+            <div class="mapa1">
+                <h3 id="txt-mapa1">UNIDADE ALCÂNTARA</h3>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d69937.99242385736!2d-43.143255490001415!3d-22.888906218292803!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x999092b072f87b%3A0x6a82858a9ad98fd0!2sR.%20Manoel%20Jo%C3%A3o%20Gon%C3%A7alves%2C%20198%20-%20Raul%20Veiga%2C%20S%C3%A3o%20Gon%C3%A7alo%20-%20RJ%2C%2024711-080!5e0!3m2!1spt-BR!2sbr!4v1746295559554!5m2!1spt-BR!2sbr" width="200" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>      
+            </div>   
+            <div class="mapa2">
+                <h3 id="txt-mapa2">UNIDADE CAIO MARTINS</h3>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58813.1418715373!2d-43.11782679589914!3d-22.883056314441795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9983f6cdba0933%3A0x9795b5e388d39b1d!2sComplexo%20Esportivo%20Caio%20Martins!5e0!3m2!1spt-BR!2sbr!4v1746295478651!5m2!1spt-BR!2sbr" width="200" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>  
+            </div> 
+            </div>
+            </div>
         </div>
-        <div class="footer-coluna">
-            <h3>MAPA DO SITE</h3>
-            <ul class="mapa-site">
-                <li><a href="{% url 'home' %}">Menu</a></li>
-                <li><a href="{% url 'admin:login' %}">Administrativo</a></li>
-                <li><a href="{% url 'eventos' %}">Eventos</a></li>
-                <li><a href="{% url 'voluntario' %}">Trabalhe Conosco</a></li>
-                <li><a href="{% url 'politica' %}">Política de Privacidade</a></li>
-            </ul>
-            <br>
-            <h3>REDE SOCIAL</h3>
-            <a href="https://www.facebook.com/groups/583756710646331/" target="_blank"><i class="fab fa-facebook"></i></a>
-        </div>
     </div>
-    <br>
-    <span>© 2025 FFC - Todos os direitos reservados</span>
-</footer>
-
-<script src="{% static 'js/script.js' %}"></script>
+    
+    <!-- -------------------------------------- MODAL --------------------------------------- -->
+    
+     <div class="modal">
+        <div id="overlay"></div>
+        <dialog id="modal-1">
+            <form>
+                <div class="modal-header">
+                    <i class="fa-solid fa-circle-xmark" id="close" onclick="fecharmodal()"> </i>
+                    <h1 class="modal-title">Quer receber detalhes <br> sobre as nossas ações?</h1>
+                    <h3 class="modal-subtitle">Preencha abaixo e receba mais informações</h3><br>
+                </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <input type="text" id="nome" name="nome" placeholder="Nome completo" required> 
+                    <input type="email" id="email" name="email" placeholder="name@exemplo.com" required> 
+                    <input type="tel" id="telefone" name="telefone" placeholder="(xx) xxxxx-xxxx" required>
+                    <button id="enviar">ENVIAR</button>
+                </div>
+            </div>
+            </form>
+        </dialog>
+     </div>
+    
+    <script src="{% static 'js/postagens.js' %}"></script>
 </body>
 </html>

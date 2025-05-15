@@ -12,8 +12,9 @@
   <!-- CSS principal -->
   <link rel="stylesheet" href="{% static 'css/inicio.css' %}" />
 </head>
-<body>
 
+<body>
+  <div id="inicio"></div>
   <!-- HEADER -->
   <header class="site-header">
     <div class="container">
@@ -23,7 +24,7 @@
       </div>
       <nav class="nav">
         <ul>
-          <li><a id="header" href="inicio.html">Início</a></li>
+          <li><a id="header" href="#inicio">Início</a></li>
           <li><a id="header" href="#nossahistoria">Nossa História</a></li>
           <li><a id="header" href="#missaoevalores">Missão</a></li>
           <li><a id="header-a" href="{% url 'voluntario' %}">Voluntarie-se</a></li>
@@ -164,7 +165,7 @@
       <div class="footer-coluna3">
         <h3>MAPA DO SITE</h3>
         <ul class="mapa-site">
-          <li><a href="inicio.html">Menu</a></li>
+          <li><a href="#inicio">Menu</a></li>
           <li><a href="#nossahistoria">Nossa História</a></li>
           <li><a href="#missaoevalores">Missão</a></li>
           <li><a href="{% url 'eventos' %}">Eventos</a></li>
