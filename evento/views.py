@@ -6,4 +6,4 @@ from .models import Post
 
 def lista_posts(request):
     posts = Post.objects.order_by('-criado_em')
-    return render(request, 'lista_posts.html', {'posts': posts})
+    return render(request, 'postagens.html', {'posts': posts})
