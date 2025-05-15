@@ -11,8 +11,8 @@
   /* FONTES */
   
   @font-face {
-    font-family: 'INTO-RUST';
-    src: url(IntroRust-Base.otf);
+    font-family: 'Intro-rust';
+    src: url('../fonts/IntroRust-Base.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
   }
@@ -45,9 +45,9 @@
       display: flex;
       gap: 20px;
       margin: 0;
-      font-family:'INTO-RUST';
-  
+      font-family: 'Intro-rust', sans-serif;
     }
+
     .nav a {
       color: #1e86c8;
       text-decoration: none;
@@ -99,7 +99,7 @@
     .nome {
       margin: 10px;
       font-size: 15px;
-      font-family:'INTO-RUST';
+      font-family: 'Intro-rust', sans-serif;
       font-weight: 400;
       margin: 0;
       font-size: 20px;
@@ -173,7 +173,7 @@
   }
   
   .informações-titulo{
-    font-family:'INTO-RUST';
+    font-family: 'Intro-rust', sans-serif;
     font-weight: 400;
     font-size: 30px;
   }
@@ -270,14 +270,14 @@
   }
   
   #nossahistoria{
-    font-family:'INTO-RUST';
+    font-family: 'Intro-rust', sans-serif;
     font-weight: 400;
     text-align: center;
     color: #00558b;
     font-size: 40px;
   } 
   #missaoevalores{
-    font-family:'INTO-RUST';
+    font-family: 'Intro-rust', sans-serif;
     font-weight: 400;
     text-align: center;
     color: #00558b;
@@ -526,7 +526,6 @@
   text-align: center;
   color: #1e86c8;
   }
-  
   
   /* RESPONSIVIDADE */
   
