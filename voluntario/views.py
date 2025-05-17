@@ -41,6 +41,7 @@ def voluntario(request):
                 dataNascimento = dataNascimento,
                 sexo = sexo
             )
+            cadastro_voluntario.save()
             return render(request, 'voluntario.html',  {'mensagem': "Cadastro realizado com sucesso!"})
         except IntegrityError:
             return render(request,  'voluntario.html', {'mensagem': 'Erro  no cadastro. Tente novamente.'})
