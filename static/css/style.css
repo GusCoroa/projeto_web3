@@ -1,7 +1,7 @@
 /* OBS: existem 2 abas para containers*/
 
 /* CONFIGURACOES GERAIS */
-* {
+/* * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -10,9 +10,9 @@
 body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
-}
+} */
 
-/* HEADER */
+/* HEADER
 
 header {
     background-color: #fbfbf8;
@@ -111,7 +111,7 @@ nav ul li a:not(.voluntario-botao)::after {
 
 nav ul li a:hover::after {
     width: 100%;
-}
+} */
 
 /* IMAGENS DE FUNDO  */
 .background-imagem-agenda, .background-imagem-historia, .background-imagem-missao {
