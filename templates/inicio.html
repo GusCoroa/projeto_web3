@@ -11,6 +11,8 @@
 
   <!-- CSS principal -->
   <link rel="stylesheet" href="{% static 'css/inicio.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/cabecalho.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/rodape.css' %}" />
 </head>
 
 <body>
@@ -27,6 +29,7 @@
           <li><a id="header" href="#inicio">Início</a></li>
           <li><a id="header" href="#nossahistoria">Nossa História</a></li>
           <li><a id="header" href="#missaoevalores">Missão</a></li>
+          <li><a id="header" href="{% url 'admin:login' %}">Administrativo</a></li>
           <li><a id="header-a" href="{% url 'voluntario' %}">Voluntarie-se</a></li>
         </ul>
       </nav>
@@ -39,7 +42,7 @@
     <div class="textoebotao">
       <h2>Nossos eventos!</h2>
       <p>Saiba mais sobre nossos eventos!</p>
-      <a href="{% url 'eventos' %}" class="textobotao">clique aqui!</a>
+      <a href="{% url 'postagens' %}" class="textobotao">clique aqui!</a>
     </div>
   </div>
 
@@ -124,19 +127,27 @@
       <div class="fundotexto fundotexto2">
         <h3>
           A FFC tem como missão fortalecer a capoeira como expressão cultural, esportiva e educacional, promovendo a inclusão social por 
-          meio de projetos comunitários e parcerias com escolas, universidades e outras organizações. Seus valores estão alicerçados no
-          respeito à tradição, na disciplina e na formação cidadã. A FFC acredita que a capoeira vai além da luta e do esporte; ela é uma
-          ferramenta poderosa para transformação social. Por meio de seus eventos e iniciativas, busca resgatar e preservar a cultura
-          afro-brasileira, valorizando suas raízes e transmitindo conhecimentos às novas gerações.
+            meio de projetos comunitários e parcerias com escolas, universidades e outras organizações. Seus valores estão alicerçados no
+            respeito à tradição, na disciplina e na formação cidadã. Além disso, a FFC tem um forte cunho educativo, buscando educar e 
+            integrar crianças e jovens à sociedade de forma digna, promovendo o caráter e a consciência social.
+            A FFC acredita que a capoeira vai além da luta e do esporte; ela é uma ferramenta poderosa para transformação social. 
+            Por meio de seus eventos e iniciativas, busca resgatar e preservar a cultura afro-brasileira, valorizando suas raízes e transmitindo
+            conhecimentos às novas gerações. A federação preza pelo respeito mútuo, pela cooperação e pelo desenvolvimento humano, incentivando
+            seus praticantes a adotarem valores como responsabilidade, solidariedade e ética.
+            Outro pilar fundamental da missão da FFC é a construção de um ambiente onde todos tenham voz e oportunidade de crescimento, 
+            independentemente de idade, gênero ou classe social. A federação se compromete com a equidade e a promoção de um espaço de aprendizado 
+            contínuo, no qual a capoeira seja vista não apenas como uma prática esportiva, mas como um caminho para a cidadania e o empoderamento 
+            individual e coletivo.  
         </h3>
       </div>
       <img src="{% static 'Imagens/capoeiradireita.svg' %}" class="imagem" />
     </div>
   </div>
 
-  <!-- FOOTER -->
-  <footer class="footer-superior">
-    <div class="texto-footer-superior">
+<!-- FOOTER -->
+
+<div class="footer-superior">
+  <div class="texto-footer-superior">
       <p>
         ACOMPANHE NOSSA REDE SOCIAL 
         <i class="fa-solid fa-right-long fa-lg" style="color: #fbfbf8;"></i>
@@ -145,38 +156,52 @@
         </a>
       </p>
     </div>
-
-    <div class="footer-inferior">
+    
+  <div class="footer-inferior">
       <div class="footer-coluna1"> 
-        <h3>UNIDADE ALCÂNTARA</h3>
-        <h6>R. Manoel João Gonçalves, 198 - Sl.403 - Raul Veiga, São Gonçalo - RJ, 24711-080<br>CNPJ: 03.310.237/0001-67</h6>
-        <br>
-        <h3>UNIDADE CAIO MARTINS</h3>
-        <h6>R. Pres. Backer, S/N - Icaraí, Niterói - RJ, 24220-045<br>CNPJ: 03.310.237/0001-67</h6>
-        <br>
-      </div>    
-      <div class="footer-coluna2">
-        <h3>CONTATO</h3>
-        <h6>(21) 98928-3942</h6>
-        <h6>(21) 92711-1366</h6>
-        <h6>federacaofluminensecapoeira@gmail.com</h6>
-        <h6>professorsapao@hotmail.com</h6>
+          <img class="logo-footer" src="{% static 'Imagens/logoheader.png' %}" alt="Logo">
+          <h3>UNIDADE ALCÂNTARA</h3>
+          <h6>R. Manoel João Gonçalves, 198 - Sl.403 - Raul Veiga, São Gonçalo - RJ, 24711-080<br>CNPJ: 03.310.237/0001-67</h6>
+          <br>
+          <h3>UNIDADE CAIO MARTINS</h3>
+          <h6>R. Pres. Backer, S/N - Icaraí, Niterói - RJ, 24220-045<br>CNPJ: 03.310.237/0001-67</h6>
+          <br>
+          <h3>CONTATO</h3>
+          <h6>(21) 98928-3942</h6>
+          <h6>(21) 92711-1366</h6>
+          <h6>federacaofluminensecapoeira@gmail.com</h6>
+          <h6>professorsapao@hotmail.com</h6>
       </div>
-      <div class="footer-coluna3">
-        <h3>MAPA DO SITE</h3>
-        <ul class="mapa-site">
-          <li><a href="#inicio">Menu</a></li>
-          <li><a href="#nossahistoria">Nossa História</a></li>
-          <li><a href="#missaoevalores">Missão</a></li>
-          <li><a href="{% url 'eventos' %}">Eventos</a></li>
-          <li><a href="{% url 'voluntario' %}">Voluntarie-se</a></li>
-          <li><a href="#" id="abrir-modal">Receber Novidades</a></li>
-          <li><a href="{% url 'politica' %}">Política de Privacidade</a></li>
-          <li><a href="{% url 'admin:login' %}">Administrativo</a></li>
-        </ul>
+      <div class="footer-coluna2">
+          <h3 id="mapadosite">MAPA DO SITE</h3>
+          <br>
+          <ul class="mapa-site">
+              <li><a href="#inicio">Menu</a></li>
+              <li><a href="#nossa-historia">Nossa Historia</a></li>
+              <li><a href="#missao">Missão</a></li>    
+              <li><a href="postagens.html">Postagens</a></li>
+              <li><a href="{% url 'eventos' %}">Eventos</a></li>
+              <li><a href="{% url 'voluntario' %}">Voluntarie-se</a></li>
+              <li><a href="#" id="abrir-modal">Receber Novidades</a></li>
+              <li><a href="{% url 'politica' %}">Política de Privacidade</a></li>
+              <li><a href="{% url 'admin:login' %}">Administrativo</a></li>
+          </ul>
       </div> 
-    </div>
-  </footer>
+      <div class="mapas">
+      <div class="mapa1">
+          <h3 id="txt-mapa1">UNIDADE ALCÂNTARA</h3>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d69937.99242385736!2d-43.143255490001415!3d-22.888906218292803!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x999092b072f87b%3A0x6a82858a9ad98fd0!2sR.%20Manoel%20Jo%C3%A3o%20Gon%C3%A7alves%2C%20198%20-%20Raul%20Veiga%2C%20S%C3%A3o%20Gon%C3%A7alo%20-%20RJ%2C%2024711-080!5e0!3m2!1spt-BR!2sbr!4v1746295559554!5m2!1spt-BR!2sbr" width="250" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>      
+      </div>   
+      <div class="mapa2">
+          <h3 id="txt-mapa2">UNIDADE CAIO MARTINS</h3>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58813.1418715373!2d-43.11782679589914!3d-22.883056314441795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9983f6cdba0933%3A0x9795b5e388d39b1d!2sComplexo%20Esportivo%20Caio%20Martins!5e0!3m2!1spt-BR!2sbr!4v1746295478651!5m2!1spt-BR!2sbr" width="250" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>  
+      </div> 
+      </div>
+      </div>
+  </div>
+</div>
+
+
 
   <!-- SCRIPT JS -->
   <script src="{% static 'js/script.js' %}"></script>
