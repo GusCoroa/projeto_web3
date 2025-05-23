@@ -38,6 +38,20 @@
 
   <div class="titulo">NOSSAS POSTAGENS</div>
 
+    <div class="carousel">
+    <button class="arrow prev">&lsaquo;</button>
+    <div class="slides">
+      {% for post in posts %}
+      <div class="img1">
+        <img src="{{ post.imagem.url }}" class="img-card" alt="{{ post.titulo }}">  
+        <h2>{{ post.titulo }}</h2>
+        {% endfor %}
+      </div>
+      
+    </div>
+    <button class="arrow next">&rsaquo;</button>
+  </div>
+
   <div class="cards-coluna">
     
     {% for post in posts %}
