@@ -12,7 +12,8 @@
   {% comment %} <link rel="stylesheet" href="{% static 'css/responsividade.css' %}"> {% endcomment %}
   {% comment %} <link rel="stylesheet" href="{% static 'css/eventos.css' %}"> {% endcomment %}
   <link rel="stylesheet" href="{% static 'css/postagens.css' %}" />
-  <link rel="stylesheet" href="{% static 'css/cabecalho.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/rodape.css' %}">
+    <link rel="stylesheet" href="{% static 'css/cabecalho.css' %}">
 
 </head>
 <body>
@@ -25,9 +26,9 @@
         </div>
         <nav class="nav">
           <ul>
-            <li><a id="header" href="#inicio">Início</a></li>
-            <li><a id="header" href="#nossahistoria">Nossa História</a></li>
-            <li><a id="header" href="#missaoevalores">Missão</a></li>
+            <li><a id="header" href="{% url 'home' %}">Início</a></li>
+            <li><a id="header" href="{% url 'home' %}">Nossa História</a></li>
+            <li><a id="header" href="{% url 'home' %}">Missão</a></li>
             <li><a id="header" href="{% url 'admin:login' %}">Administrativo</a></li>
             <li><a id="header-a" href="{% url 'voluntario' %}">Voluntarie-se</a></li>
           </ul>

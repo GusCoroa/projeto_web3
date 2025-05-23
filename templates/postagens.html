@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FFC - POSTAGENS</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-    <link rel="stylesheet" href="{% static 'css/posts.css' %}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   {% comment %} <link rel="stylesheet" href="{% static 'css/style.css' %}"> {% endcomment %}
   {% comment %} <link rel="stylesheet" href="{% static 'css/responsividade.css' %}"> {% endcomment %}
@@ -14,6 +13,7 @@
   <link rel="stylesheet" href="{% static 'css/postagens.css' %}" />
   <link rel="stylesheet" href="{% static 'css/cabecalho.css' %}" />
   <link rel="stylesheet" href="{% static 'css/rodape.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/posts.css' %}">
 
 </head>
 <body>
@@ -27,8 +27,8 @@
         <nav class="nav">
           <ul>
             <li><a id="header" href="{% url 'home' %}">Início</a></li>
-            <li><a id="header" href="#nossahistoria">Nossa História</a></li>
-            <li><a id="header" href="#missaoevalores">Missão</a></li>
+            <li><a id="header" href="{% url 'home' %}">Nossa História</a></li>
+            <li><a id="header" href="{% url 'home' %}">Missão</a></li>
             <li><a id="header" href="{% url 'admin:login' %}">Administrativo</a></li>
             <li><a id="header-a" href="{% url 'voluntario' %}">Voluntarie-se</a></li>
           </ul>
@@ -91,10 +91,10 @@
           <h3 id="mapadosite">MAPA DO SITE</h3>
           <br>
           <ul class="mapa-site">
-              <li><a href="iniciosemdjango.html">Menu</a></li>
-              <li><a href="#nossa-historia">Nossa Historia</a></li>
-              <li><a href="#missao">Missão</a></li>    
-              <li><a href="postagens.html">Postagens</a></li>
+              <li><a href="{% url 'home' %}">Menu</a></li>
+              <li><a href="{% url 'home' %}">Nossa Historia</a></li>
+              <li><a href="{% url 'home' %}">Missão</a></li>    
+              <li><a href="{% url 'postagens' %}">Postagens</a></li>
               <li><a href="{% url 'eventos' %}">Eventos</a></li>
               <li><a href="{% url 'voluntario' %}">Voluntarie-se</a></li>
               <li><a href="#" id="abrir-modal">Receber Novidades</a></li>
