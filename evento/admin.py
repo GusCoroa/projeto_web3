@@ -1,8 +1,8 @@
 from django.contrib import admin
 from .models import Evento
-from django.contrib.auth.models import User
-from django.contrib.auth.admin import UserAdmin
 from .models import Post
+from django.urls import reverse
+from django.utils.html import format_html
 
 
 
@@ -11,21 +11,65 @@ admin.site.site_header = "Sistema de Administração FFC"
 admin.site.site_title = "Administração"
 admin.site.index_title = "Painel de Controle"
 
-admin.site.register(Evento)
-admin.site.register(Post)
 
+
+# class EventoAdmin(admin.ModelAdmin):
+#     list_display = ("nome", "data", "local", "gerente", 'excluir_link')
+#     list_display_links = ('nome',)
+
+
+
+
+#     def acao_excluir(self, obj):
+#         url = reverse(
+#             f'admin:{obj.meta.app_label}{obj._meta.model_name}_delete',
+#             args=[obj.pk]
+#         )
+#         return format_html(
+#             '<a class="deletelink" href="{}">&times; Excluir</a>',
+#             url
+#         )
+#     acao_excluir.short_description = ''
+    
+#     # def botao_excluir(self, obj):
+#     #     url = reverse('admin:%s_%s_delete' % (obj._meta.app_label,obj._meta.model_name),
+#     #         args=[obj.pk]
+#     #     )
+#     #     return format_html('<a class="button deletelink" href="{}">Excluir</a>', url)
+#     # botao_excluir.short_description = ''
+# class CustomUserAdmin(UserAdmin):
+#     class Media:
+#         css = {
+#             "all": ("css/custom_admin.css",)
+#         }
+
+
+
+
+
+
+
+@admin.register(Evento)
 class EventoAdmin(admin.ModelAdmin):
-    list_display = ("nome", "data", "local", "gerente")  # mostra o gerente na listagem
-    search_fields = ("nome", "gerente__nome")  # permite buscar pelo nome do gerente
+    list_display = ('nome', 'descricao', 'data', 'acao_excluir')
+    list_display_links = ('nome',)  # deixa só o nome clicável
+    # change_form_template = 'admin/evento/evento/change_form.html'
+    search_fields = ("nome", "gerente__nome")
+
+    def acao_excluir(self, obj):
+            url = reverse(f'admin:{obj._meta.app_label}_{obj._meta.model_name}_delete',args=[obj.pk])
+            return format_html('<a class="deletelink" href="{}">&times; Excluir</a>', url)
 
 
+@admin.register(Post)
+class PostAdmin(admin.ModelAdmin):
+    list_display = ('titulo', 'legenda', 'acao_excluir')
+    list_display_links = ('titulo',)  # deixa só o nome clicável
+    # change_form_template = 'admin/evento/evento/change_form.html'
+    search_fields = ("titulo",)
 
-class CustomUserAdmin(UserAdmin):
-    class Media:
-        css = {
-            "all": ("css/custom_admin.css",)
-        }
-
-# Substitui o User padrão pelo seu
-admin.site.unregister(User)
-admin.site.register(User, CustomUserAdmin)
+    def acao_excluir(self, obj):
+            url = reverse(f'admin:{obj._meta.app_label}{obj._meta.model_name}_delete', args=[obj.pk])
+            return format_html('<a class="deletelink" href="{}">&times; Excluir</a>', url)
+        
+    

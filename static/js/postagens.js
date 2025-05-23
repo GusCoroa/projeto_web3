@@ -9,6 +9,3 @@ function expandirTexto(button) {
         button.textContent = "Ver mais";
     }
 }
-
-
-  
