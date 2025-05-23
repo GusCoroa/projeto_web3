@@ -9,7 +9,7 @@ from voluntario.models import Voluntario
 
 class Evento (models.Model):
     nome = models.CharField("Nome do Evento", max_length = 50)
-    descricao = models.CharField("Descrição",max_length = 100)
+    descricao = models.TextField("Descrição")
     data = models.DateField("Data do Evento")
     local = models.CharField("Local",max_length = 50)
 
