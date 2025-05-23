@@ -22,8 +22,8 @@ class Evento (models.Model):
         related_name="eventos_gerenciados"
     )
 
-    insumo = models.ManyToManyField(Insumo, blank = True)
-    voluntario = models.ManyToManyField(Voluntario, blank = True)
+    insumo = models.ManyToManyField(Insumo, blank = True, related_name="eventos")
+    voluntario = models.ManyToManyField(Voluntario, blank = True, related_name="eventos")
     class Meta:
         verbose_name = "Evento"
         verbose_name_plural = "Eventos"
