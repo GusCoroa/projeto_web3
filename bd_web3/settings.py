@@ -151,7 +151,7 @@ LANGUAGES = [
 STATIC_URL = '/static/'
 import os
 STATICFILES_DIRS = [
-    BASE_DIR / 'static_common',
+    #BASE_DIR / 'static_common', #Esta dando um aviso nessa parte, não é um erro ainda mas pode ser no futuro
     os.path.join(BASE_DIR, 'static'),
 ]
 STATIC_ROOT = BASE_DIR / 'staticfiles'
