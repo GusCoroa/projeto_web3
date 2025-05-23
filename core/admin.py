@@ -1,24 +1,20 @@
 from django.contrib import admin
 from django.urls import path, reverse
-from django.template.response import TemplateResponse
-from django.http import HttpResponseRedirect
 from evento.models import Evento
 from insumo.models import Insumo
 from voluntario.models import Voluntario
 from django.template.response import TemplateResponse
-from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from reportlab.pdfgen import canvas
-from io import BytesIO
-from django.contrib import admin
-from django.urls import path, reverse
-from django.template.response import TemplateResponse
-from django.shortcuts import get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
-from reportlab.pdfgen import canvas
 from io import BytesIO
 from django.conf import settings
 from reportlab.lib.pagesizes import A4
+import textwrap
+from reportlab.lib.utils    import ImageReader
+from django.utils.text import slugify
+
+
 
 class ExportPdfMixin:
     change_form_template = 'admin/export_pdf_change_form.html'
@@ -34,59 +30,113 @@ class ExportPdfMixin:
         ]
         return custom + urls
 
+
     def export_pdf_view(self, request, object_id):
         obj = get_object_or_404(self.model, pk=object_id)
         buffer = BytesIO()
-        p = canvas.Canvas(buffer)
-        logo_path = settings.BASE_DIR / 'static' / 'Imagens' / 'logoheader.png'
-        p.drawImage(str(logo_path), 50, 740, width=100, height=100, mask='auto')
-        p.setFont("Helvetica-Bold", 20)
-        p.drawString(200, 800, f"Federação Fluminense de Capoeira")
-        p.drawCentredString(300, 750, f"Relatório de {self.model._meta.verbose_name.title()}")
-        
+        p = canvas.Canvas(buffer, pagesize=A4)
         width, height = A4
-        margin       = 50
-        pad_x        = 250    # espaço entre label e valor
-        line_height  = 24     # espaçamento vertical entre linhas
-        y = height - 200
-        y = 700
-        all_fields = list(self.model._meta.fields) + list(self.model._meta.many_to_many)
+
+        # — Logo e título —
+        logo = ImageReader(settings.BASE_DIR / 'static' / 'Imagens' / 'logoheader.png')
+        p.drawImage(logo, 15, height-100, width=100, height=100, mask='auto')
+        p.setFont("Helvetica-Bold", 20)
+        p.drawCentredString(width/2, height-50, "Federação Fluminense de Capoeira")
+        p.setFont("Helvetica-Bold", 16)
+        p.drawCentredString(width/2, height-80, f"Relatório de {self.model._meta.verbose_name.title()}")
+
+        # — Configurações de layout —
+        margin      = 30
+        line_height = 18
+        col1_x = margin
+        col2_x = margin + 150
+        y      = height - 180
+
         p.setFont("Helvetica", 12)
+        # quantos chars cabem na descrição
+        max_width      = 600
+        avg_char_width = p.stringWidth("M", "Helvetica", 12)
+        max_chars      = int(max_width / avg_char_width)
+
+        all_fields = list(self.model._meta.fields) + list(self.model._meta.many_to_many)
         for field in all_fields:
             label = field.verbose_name.title()
-            if field.many_to_many:
-                itens = getattr(obj, field.name).all()
-                value = ' | '.join(str(i) for i in itens) or '–'
-            else:
-                value = getattr(obj, field.name) or '–'
-                
-            # Label em negrito e um pouco maior
-            p.setFont("Helvetica-Bold", 12)
-            p.drawString(margin, y, f"{label}:")
 
-            # Valor em fonte normal, desenhado um pouco mais pra direita
-            p.setFont("Helvetica", 12)
-            p.drawString(margin + pad_x, y, str(value))
+            # 1) desenha a label
+            p.setFont("Helvetica-Bold", 12)
+            p.drawString(col1_x, y, f"{label}:")
             
-            y -= 18
+            # 2) monta lista de linhas pra esse campo
+            if field.many_to_many:
+                lines = [f"• {str(i)}" for i in getattr(obj, field.name).all()] or ["–"]
+            elif field.name == "descricao":
+                raw   = getattr(obj, field.name) or ""
+                lines = textwrap.wrap(raw, max_chars) or ["–"]
+            else:
+                raw   = getattr(obj, field.name)
+                lines = [str(raw)] if raw is not None else ["–"]
+
+            # 3) desenha cada linha começando em col2_x
+            p.setFont("Helvetica", 12)
+            for line in lines:
+                y -= line_height
+                if y < margin:
+                    p.showPage()
+                    y = height - margin
+                    p.setFont("Helvetica", 12)
+                p.drawString(col2_x, y+20, line)
+
+            # 4) adiciona um espaçamento extra antes do próximo campo
+            y -= line_height / 2
             if y < margin:
                 p.showPage()
                 y = height - margin
 
-        # for field in self.model._meta.fields:
+            # 5) nova página se necessário
+            if y < margin:
+                p.showPage(); y = height - margin
+
+        # for field in all_fields:
         #     label = field.verbose_name.title()
-        #     value = getattr(obj, field.name)
-        #     p.setFont("Helvetica", 12,)
-        #     p.drawString(50, y, f"{label}: {value}")
-        #     y -= 20
-        #     if y < 50:
+        #     # extrai valor (tratando M2M)
+        #     if field.many_to_many:
+        #         itens = getattr(obj, field.name).all()
+        #         value = ', '.join(str(i) for i in itens) or '–'
+        #     else:
+        #         raw = getattr(obj, field.name)
+        #         value = str(raw) if raw is not None else '–'
+
+        #     # desenha label em negrito
+        #     p.setFont("Helvetica-Bold", 12)
+        #     p.drawString(margin, y, f"{label}:")
+        #     y -= line_height
+
+        #     # desenha valor
+        #     p.setFont("Helvetica", 12)
+        #     if field.name == "descricao":
+        #         # quebra em várias linhas
+        #         for line in textwrap.wrap(value, max_chars):
+        #             p.drawString(margin + 10, y, line)
+        #             y -= line_height
+        #             if y < margin:
+        #                 p.showPage()
+        #                 y = height - margin
+        #     else:
+        #         p.drawString(margin + pad_x, y, value)
+        #         y -= line_height
+
+        #     # nova página se necessário
+        #     if y < margin:
         #         p.showPage()
-        #         y = 800
+        #         y = height - margin
+
+        # finaliza e retorna
         p.showPage()
         p.save()
         buffer.seek(0)
+        filename = f"{slugify(obj.nome)}.pdf"
         resp = HttpResponse(buffer, content_type='application/pdf')
-        resp['Content-Disposition'] = f'attachment; filename="Relatorio_{obj.nome}.pdf"'
+        resp['Content-Disposition'] = f'attachment; filename="{filename}"'
         return resp
 
 

@@ -15,7 +15,7 @@ admin.site.index_title  = "Painel de Controle"
 
 @admin.register(Evento)
 class EventoAdmin(ExportPdfMixin, admin.ModelAdmin):
-    list_display      = ('nome', 'descricao', 'data', 'acoes')
+    list_display      = ('nome', 'data', 'acoes')
     list_display_links= ('nome',)
     search_fields     = ("nome", "gerente__nome")
 
