@@ -1,0 +1,12 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+  }
+  body {
+    padding-top: 140px; 
+    background-color: #fbfbf8;
+  }
+  html{
+      scroll-behavior: smooth;
+  }

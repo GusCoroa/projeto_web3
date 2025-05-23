@@ -1,0 +1,126 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidade - FFC</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsividade.css' %}">
+    <link rel="stylesheet" href="{% static 'css/politica.css' %}">
+</head>
+<body>
+
+<header id="header">
+    <div class="logo">
+        <img src="{% static 'Imagens/Logo.jpg' %}" alt="Logo" width="110" height="110">
+        <h1>FEDERAÇÃO<br>FLUMINENSE<br>DE CAPOEIRA</h1>
+    </div>
+    <div class="menu-toggle" id="menuClique">
+        <i class="fas fa-bars"></i>
+    </div>
+    <nav id="menuHeader">
+        <ul>
+            <li><a href="{% url 'home' %}">HOME</a></li>
+            <li><a href="{% url 'eventos' %}">EVENTOS</a></li>
+            <li><a href="{% url 'admin:login' %}">ADMINISTRATIVO</a></li>
+            <li><a href="{% url 'voluntario' %}" class="voluntario-botao">SEJA UM VOLUNTÁRIO</a></li>
+        </ul>
+    </nav>
+</header>
+<br><br><br><br><br>
+<div class="politica">
+    <h1 class="titulo-politica">Política de Privacidade</h1>
+    <p><strong>Última atualização:</strong> 30 de abril de 2025</p>
+
+    <p>
+      A <strong>FFC – Federação Fluminense de Capoeira</strong> respeita a sua privacidade e está comprometida com a proteção dos dados pessoais dos voluntários que se cadastram em nosso site.
+    </p>
+
+    <h2 class="subtitulo-politica">1. Coleta de Dados</h2>
+    <p>
+      Ao preencher o formulário de voluntariado, coletamos os seguintes dados pessoais:
+    </p>
+    <ul>
+      <li>- Nome completo</li>
+      <li>- CPF</li>
+      <li>- Data de nascimento</li>
+      <li>- Email</li>
+      <li>- Telefone</li>
+      <li>- Sexo</li>
+    </ul>
+
+    <h2 class="subtitulo-politica">2. Finalidade do Uso dos Dados</h2>
+    <p>Os dados coletados serão utilizados exclusivamente para:</p>
+    <ul>
+      <li>- Gerenciar o cadastro de voluntários;</li>
+      <li>- Organizar e comunicar eventos, ações e campanhas promovidas pela FFC;</li>
+      <li>- Entrar em contato com os voluntários por email ou telefone;</li>
+      <li>- Emitir certificados de participação (quando aplicável);</li>
+      <li>- Atender obrigações legais ou regulatórias.</li>
+    </ul>
+
+    <h2 class="subtitulo-politica">3. Compartilhamento de Dados</h2>
+    <p>
+      Os dados não serão vendidos ou compartilhados com terceiros, salvo quando exigido por lei ou com o consentimento expresso do voluntário.
+    </p>
+
+    <h2 class="subtitulo-politica">4. Armazenamento e Segurança</h2>
+    <p>
+      Os dados serão armazenados em ambiente seguro e com acesso restrito, sendo utilizados apenas por pessoal autorizado da FFC.
+    </p>
+
+    <h2 class="subtitulo-politica">5. Direitos dos Titulares</h2>
+    <p>
+      Conforme a Lei Geral de Proteção de Dados (LGPD – Lei nº 13.709/2018), você tem o direito de:
+    </p>
+    <ul>
+      <li>- Solicitar acesso, correção ou exclusão dos seus dados;</li>
+      <li>- Revogar seu consentimento a qualquer momento;</li>
+      <li>- Solicitar informações sobre o uso e o tratamento de seus dados.</li>
+    </ul>
+
+    <h2 class="subtitulo-politica">6. Contato</h2>
+    <p>
+      Em caso de dúvidas ou solicitações relacionadas à privacidade dos seus dados, entre em contato pelo email: <a href="mailto:federacaofluminensecapoeira@gmail.com">federacaofluminensecapoeira@gmail.com</a>
+    </p>
+
+    <p>
+      Ao enviar seus dados pelo formulário, você concorda com esta Política de Privacidade.
+    </p>
+  </div>
+
+<footer>
+    <div class="logo2">
+        <img src="{% static 'Imagens/Logo2.jpg' %}" alt="Logo" width="85" height="80">
+        <h1>FEDERAÇÃO FLUMINENSE DE CAPOEIRA</h1>
+    </div>
+    <div class="informacoes-footer">
+        <div class="footer-coluna">
+            <h3>UNIDADE CAIO MARTINS</h3>
+            <p>Rua Presidente Backer, Santa Rosa<br>Estádio Caio Martins<br>CEP: 24220-040<br>Niterói • RJ<br>CNPJ: 03.310.237/0001-67</p>
+            <h3>CONTATO</h3>
+            <p>(21) 98928-3942</p>
+            <p>(21) 92711-1366</p>
+            <p>federacaofluminensecapoeira@gmail.com</p>
+            <p>professorsapao@hotmail.com</p>
+        </div>
+        <div class="footer-coluna">
+            <h3>MAPA DO SITE</h3>
+            <ul class="mapa-site">
+                <li><a href="{% url 'home' %}">Menu</a></li>
+                <li><a href="{% url 'admin:login' %}">Administrativo</a></li>
+                <li><a href="{% url 'eventos' %}">Eventos</a></li>
+                <li><a href="{% url 'voluntario' %}">Trabalhe Conosco</a></li>
+                <li><a href="{% url 'politica' %}">Política de Privacidade</a></li>
+            </ul>
+            <h3>REDE SOCIAL</h3>
+            <a href="https://www.facebook.com/groups/583756710646331/" target="_blank"><i class="fab fa-facebook"></i></a>
+        </div>
+    </div>
+    <span>© 2025 FFC - Todos os direitos reservados</span>
+</footer>
+<script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

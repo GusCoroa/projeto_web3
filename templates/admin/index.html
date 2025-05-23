@@ -1,0 +1,14 @@
+{% extends "admin/index.html" %}
+{% block content %}
+<form action="{% url 'admin:search' %}" method="get" style="margin-bottom:1em;">
+  <input name="q" placeholder="Buscar..." value="{{ request.GET.q }}">
+  <select name="category">
+    <option value="all">Todas</option>
+    <option value="evento">Eventos</option>
+    <option value="insumo">Insumos</option>
+    <option value="voluntario">Voluntários</option>
+  </select>
+  <button type="submit">Buscar</button>
+</form>
+{{ block.super }}
+{% endblock %}

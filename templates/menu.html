@@ -1,0 +1,186 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Federação Fluminense de Capoeira</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsividade.css' %}">
+</head>
+<body>
+
+<!-- HTML DO HEADER -->
+<div class="background-imagem-agenda">
+    <header id="header">
+        <div class="logo">
+            <img src="{% static 'Imagens/Logo.jpg' %}" alt="Logo" width="110" height="110">
+            <h1>FEDERAÇÃO<br>FLUMINENSE<br>DE CAPOEIRA</h1>
+        </div>
+        <div class="menu-toggle" id="menuClique">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav id="menuHeader">
+            <ul>
+                <li><a href="#menu">HOME</a></li>
+                <li><a href="#historia">NOSSA HISTÓRIA</a></li>
+                <li><a href="#missao">MISSÃO</a></li>
+                <li><a href="{% url 'admin:login' %}">ADMINISTRATIVO</a></li>
+                <li><a href="{% url 'voluntario' %}" class="voluntario-botao">SEJA UM VOLUNTÁRIO</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- CAIXA DOS EVENTOS -->
+    <section id="menu" class="hero-section">
+        <div class="container">
+            <div class="agenda-caixa">
+                <h2>Nossos eventos!</h2>
+                <p>Saiba mais sobre nossos eventos!</p>
+                <a href="{% url 'eventos' %}" class="agenda-botao">clique aqui!</a>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- HTML DA PARTE DE INFORMAÇÕES SOBRE A CAPOEIRA -->
+<article class="informacoes">
+    <div class="informações-container">
+        <h1 class="informações-titulo">Como transformamos vidas</h1>
+        <hr>
+        <h2 class="informações-subtitulo">TRANSFORMAMOS VIDAS ATRAVÉS DA CAPOEIRA, PROFISSIONALIZAMOS CAPOEIRISTAS, APRESENTAMOS O ESPORTE E O INTRODUZIMOS NA EDUCAÇÃO</h2>
+    </div>
+    <div id="container">
+        <div class="accordion">
+            <button class="accordion-header">
+                <span>APOIO PROFISSIONAL</span>
+                <i class="fa-solid fa-chevron-down arrow"></i>
+            </button>
+            <div class="accordion-body">
+                Promovemos um futuro diferente para crianças e jovens.
+            </div>
+        </div>
+
+        <div class="accordion">
+            <button class="accordion-header">
+                <span>EDUCAÇÃO</span>
+                <i class="fa-solid fa-chevron-down arrow"></i>
+            </button>
+            <div class="accordion-body">
+                Promovemos o conhecimento e a cultura, incentivando o aprendizado.
+            </div>
+        </div>
+
+        <div class="accordion">
+            <button class="accordion-header">
+                <span>INCLUSÃO SOCIAL</span>
+                <i class="fa-solid fa-chevron-down arrow"></i>
+            </button>
+            <div class="accordion-body">
+                Promovemos oportunidades para jovens através da cultura e do esporte.
+            </div>
+        </div>
+
+        <div class="accordion">
+            <button class="accordion-header">
+                <span>SAÚDE E BEM-ESTAR</span>
+                <i class="fa-solid fa-chevron-down arrow"></i>
+            </button>
+            <div class="accordion-body">
+                Incentivamos práticas saudáveis para o desenvolvimento físico e mental.
+            </div>
+        </div>
+    </div>
+</article>
+
+<!-- HISTÓRIA -->
+<section id="historia" class="historia-section">
+    <div class="background-imagem-historia">
+        <div class="container">
+            <h4>Nossa História</h4>
+        </div>
+        <div class="texto-historia">
+            <p>A Federação Fluminense de Capoeira (FFC) foi fundada em 29 de maio de 1999, na cidade de São Gonçalo, Rio de Janeiro, 
+                pelo renomado Mestre e Doutor Carmelindo, com o objetivo de preservar, promover e expandir a prática da capoeira no 
+                estado do Rio de Janeiro e em todo o Brasil. Desde sua fundação, a FFC se tornou um referencial na difusão da cultura 
+                afro-brasileira, proporcionando oportunidades para atletas, mestres e entusiastas da capoeira de todas as idades.
+                <br><br>Desde sua criação, a federação desenvolve projetos sociais voltados para jovens em situação de vulnerabilidade,
+                 utilizando a capoeira como ferramenta de inclusão social e desenvolvimento pessoal. A FFC se empenha em salvar jovens 
+                 do descaso governamental, oferecendo-lhes oportunidades para um futuro mais promissor.
+                <br><br>Além dos projetos sociais, a FFC realiza regularmente oficinas, seminários, rodas de capoeira e festivais que 
+                reúnem praticantes de diferentes regiões do país e do exterior. Esses eventos promovem a troca de saberes, fortalecem 
+                os laços da comunidade capoeirista e incentivam o reconhecimento da capoeira como patrimônio cultural imaterial da humanidade.
+                <br><br>Ao longo dos anos, a FFC tem formado diversas gerações de capoeiristas, garantindo que a arte continue viva e 
+                evoluindo. O legado do Doutor Carmelindo e da Federação Fluminense de Capoeira segue crescendo, consolidando-se como 
+                um dos principais pilares da capoeira no Brasil.
+                <br><br>Reconhecida nacional e internacionalmente, a FFC tem se tornado modelo para outras instituições que buscam 
+                utilizar a capoeira como instrumento de transformação social. Com um olhar para o futuro, a FFC segue expandindo suas
+                 atividades, mantendo viva a tradição da capoeira e contribuindo para a formação cidadã de jovens, através da arte, do
+                  esporte e da cultura.<br></p>
+        </div>
+        <br><br><br>
+    </div>
+</section>
+
+<!-- MISSÃO -->
+<section id="missao" class="missao-section">
+    <div class="background-imagem-missao">
+        <div class="container">
+            <h4>Missão e Valores</h4>
+        </div>
+        <div class="texto-missao">
+            <p>A FFC tem como missão fortalecer a capoeira como expressão cultural, esportiva e educacional, promovendo a inclusão social por 
+                meio de projetos comunitários e parcerias com escolas, universidades e outras organizações. Seus valores estão alicerçados no
+                 respeito à tradição, na disciplina e na formação cidadã. Além disso, a FFC tem um forte cunho educativo, buscando educar e 
+                 integrar crianças e jovens à sociedade de forma digna, promovendo o caráter e a consciência social.
+                <br><br>A FFC acredita que a capoeira vai além da luta e do esporte; ela é uma ferramenta poderosa para transformação social. 
+                Por meio de seus eventos e iniciativas, busca resgatar e preservar a cultura afro-brasileira, valorizando suas raízes e transmitindo
+                 conhecimentos às novas gerações. A federação preza pelo respeito mútuo, pela cooperação e pelo desenvolvimento humano, incentivando
+                  seus praticantes a adotarem valores como responsabilidade, solidariedade e ética.
+                <br><br>Outro pilar fundamental da missão da FFC é a construção de um ambiente onde todos tenham voz e oportunidade de crescimento, 
+                independentemente de idade, gênero ou classe social. A federação se compromete com a equidade e a promoção de um espaço de aprendizado 
+                contínuo, no qual a capoeira seja vista não apenas como uma prática esportiva, mas como um caminho para a cidadania e o empoderamento 
+                individual e coletivo.<br></p>
+        </div>
+        <br><br><br>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="logo2">
+        <img src="{% static 'Imagens/Logo2.jpg' %}" alt="Logo" width="85" height="80">
+        <h1>FEDERAÇÃO FLUMINENSE DE CAPOEIRA</h1>
+    </div>
+    <div class="informacoes-footer">
+        <div class="footer-coluna">
+            <h3>UNIDADE CAIO MARTINS</h3>
+            <p>Rua Presidente Backer, Santa Rosa <br>Estádio Caio Martins<br>CEP: 24220-040<br>Niterói • RJ<br>CNPJ: 03.310.237/0001-67</p>
+            <br>
+            <h3>CONTATO</h3>
+            <p>(21) 98928-3942</p>
+            <p>(21) 92711-1366</p>
+            <p>federacaofluminensecapoeira@gmail.com</p>
+            <p>professorsapao@hotmail.com</p>
+        </div>
+        <div class="footer-coluna">
+            <h3>MAPA DO SITE</h3>
+            <ul class="mapa-site">
+                <li><a href="#menu">Menu</a></li>    <!-- {% url 'home' %} -->
+                <li><a href="{% url 'admin:login' %}">Administrativo</a></li>
+                <li><a href="{% url 'eventos' %}">Eventos</a></li>
+                <li><a href="{% url 'voluntario' %}">Trabalhe Conosco</a></li>
+                <li><a href="{% url 'politica' %}">Política de Privacidade</a></li>
+            </ul>
+            <br>
+            <h3>REDE SOCIAL</h3>
+            <a href="https://www.facebook.com/groups/583756710646331/" target="_blank"><i class="fab fa-facebook"></i></a>
+        </div>
+    </div>
+    <br>
+    <span>© 2025 ffc - Todos os direitos reservados</span>
+</footer>
+<script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
