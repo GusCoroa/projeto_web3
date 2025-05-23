@@ -1,0 +1,10 @@
+{# templates/admin/export_pdf_change_form.html #}
+{% extends "admin/change_form.html" %}
+{% block object-tools %}
+  {{ block.super }}
+  {% if export_pdf_url %}
+    <li>
+      <a href="{{ export_pdf_url }}" class="pdflink">🖨️ Gerar PDF</a>
+    </li>
+  {% endif %}
+{% endblock %}
