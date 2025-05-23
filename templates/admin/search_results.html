@@ -1,0 +1,30 @@
+{% extends "admin/base_site.html" %}
+
+{% block content %}
+  <form action="{% url 'admin:search' %}" method="get" style="margin-bottom:1em;">
+    <input name="q" placeholder="Buscar..." value="{{ q }}">
+    <select name="category">
+      {% for key,label in categories %}
+        <option value="{{ key }}" {% if selected_cat == key %}selected{% endif %}>{{ label }}</option>
+      {% endfor %}
+    </select>
+    <button type="submit">Buscar</button>
+  </form>
+
+  <h1>Resultados pra “{{ q }}”</h1>
+
+  {% for category, entries in results.items %}
+    <h2>{{ category }} ({{ entries|length }})</h2>
+    {% if entries %}
+      <ul>
+        {% for entry in entries %}
+          <li>
+            <a href="{{ entry.url }}">{{ entry.obj }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>Nenhum resultado em {{ category|lower }}.</p>
+    {% endif %}
+  {% endfor %}
+{% endblock %}

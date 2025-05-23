@@ -1,0 +1,9 @@
+
+
+.deletelink.button {
+  color: #fff !important;
+  background-color: #d9534f;
+  border-radius: 3px;
+  padding: 2px 6px;
+  text-decoration: none;
+}

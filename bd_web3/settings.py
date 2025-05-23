@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'evento',
     'insumo',
     'voluntario',
+    'core',
 ]
 
 SITE_ID = 1
