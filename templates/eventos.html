@@ -91,14 +91,14 @@
             <h3 id="mapadosite">MAPA DO SITE</h3>
             <br>
             <ul class="mapa-site">
-                <li><a href="inicio.html">Menu</a></li>
-                <li><a href="#nossa-historia">Nossa Historia</a></li>
-                <li><a href="#missao">Missão</a></li>    
-                <li><a href="postagens.html">Postagens</a></li>
-                <li><a href="eventos">Eventos</a></li>
-                <li><a href="voluntario">Voluntarie-se</a></li>
+                <li><a href="{% url 'home' %}#topo ">Menu</a></li>
+                <li><a href="{% url 'home' %}#nossahistoria">Nossa Historia</a></li>
+                <li><a href="{% url 'home' %}#missaoevalores">Missão</a></li>    
+                <li><a href="{% url 'postagens' %}">Postagens</a></li>
+                <li><a href="{% url 'eventos'%}">Eventos</a></li>
+                <li><a href="{% url 'voluntario' %}">Voluntarie-se</a></li>
                 <li><a href="#" id="abrir-modal">Receber Novidades</a></li>
-                <li><a href="politica">Política de Privacidade</a></li>
+                <li><a href="{% url 'politica' %}">Política de Privacidade</a></li>
                 <li><a href="{% url 'admin:login' %}">Administrativo</a></li>
             </ul>
         </div> 
