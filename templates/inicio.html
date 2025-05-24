@@ -25,7 +25,7 @@
                 <li><a id="header" href="#inicio">Início</a></li>
                 <li><a id="header" href="#nossahistoria">Nossa História</a></li>
                 <li><a id="header" href="#missaoevalores">Missão</a></li>
-                <li><a id="header" href="{% url 'admin:login' %}">Administrativo</a></li>
+                {% comment %} <li><a id="header" href="{% url 'admin:login' %}">Administrativo</a></li> {% endcomment %}
                 <li><a id="header-a" href="{% url 'voluntario' %}">Voluntarie-se</a></li>
             </ul>
           </nav>
@@ -192,7 +192,7 @@
                 <li><a href="#inicio">Menu</a></li>
                 <li><a href="#nossahistoria">Nossa Historia</a></li>
                 <li><a href="#missaoevalores">Missão</a></li>    
-                <li><a href="postagens.html">Postagens</a></li>
+                <li><a href="{% url 'postagens' %}">Postagens</a></li>
                 <li><a href="{% url 'eventos' %}">Eventos</a></li>
                 <li><a href="{% url 'voluntario' %}">Voluntarie-se</a></li>
                 <li><a href="#" id="abrir-modal">Receber Novidades</a></li>

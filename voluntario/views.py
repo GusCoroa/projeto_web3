@@ -14,6 +14,9 @@ def eventos(request):
 def politica(request):
     return render(request, 'politica.html')
 
+def postagens(request):
+    return render(request, 'postagens.html')
+
 logger = logging.getLogger(__name__)
 
 def voluntario(request):

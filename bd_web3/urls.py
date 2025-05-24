@@ -36,10 +36,12 @@ urlpatterns = [
     path('voluntario/', views.voluntario, name='voluntario'),
     # Eventos
     path('eventos/', views.eventos, name='eventos'),
+    # Postagens
+    path('postagens/', views.postagens, name='postagens'),
     # Politica
     path('politica/', views.politica, name='politica'),
-    # Pagina de postagens
-    path('posts/', include('evento.urls')),   
+    # # Pagina de postagens
+    # path('posts/', include('evento.urls')),   
 ]
 
 # desenvolvimento
