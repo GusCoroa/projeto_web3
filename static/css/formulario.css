@@ -6,7 +6,7 @@
 
   body {
     margin-top: 140px;
-    background: linear-gradient(to bottom, transparent, #73a6dd, transparent);
+    background: #1e86c8
   }
 
   html{
@@ -30,33 +30,63 @@
     padding-left: 10px;
     padding-right: 10px;
     border-radius: 20px;
-    box-shadow: 10px 10px 12px rgba(0, 0, 0, 0.1);
+    color: #fbfbf8;
     font-family: HK Grotesk, sans-serif;
   }
   
   .caixa-formulario h1, .caixa-formulario h4{
     text-align: center;
+      line-height: 45px;
   }
   
-  .formulario{
-    font-family: 'Intro-rust', sans-serif;
-    margin: 80px 100px;
+ .formulario {
+  font-family: HK Grotesk, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 0;
 }
 
-.formulario {
-    display: grid;
-    grid-template-columns: max-content 1fr; 
-    column-gap: 1rem;  
-    row-gap: 1.5rem;   
-    align-items: center;
-  }
-  
-  .formulario input,
-  .formulario select {
-    justify-self: end; 
-    width: 100%;       
-    max-width: 200px;  
-  }
+.formulario label {
+  width: 65%;
+  text-align: left;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  color: #fbfbf8;
+}
+
+
+#submit {
+  background-color: #1e86c8;
+  color: #fbfbf8;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 10px;
+  font-size: 14px;
+  width: 20%; 
+}
+.formulario input::placeholder,
+.formulario select::placeholder {
+  color: #00558b;
+  font-family: HK Grotesk, sans-serif;
+}
+
+.formulario input,
+.formulario select {
+  background-color: #fbfbf8;
+  color: #00558b;
+  border: none;
+  padding: 10px 10px;
+  border-radius: 20px;
+  width: 50%; 
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+
+
 
 
 .alerta, .sucesso {
