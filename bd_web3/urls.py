@@ -31,7 +31,7 @@ urlpatterns = [
     path('accounts/reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
     path('accounts/reset/done/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
     # Menu
-    path('', TemplateView.as_view(template_name='iniciosemdjango.html'), name='home'), 
+    path('', TemplateView.as_view(template_name='inicio.html'), name='home'), 
     # formulario
     path('voluntario/', views.voluntario, name='voluntario'),
     # Eventos
