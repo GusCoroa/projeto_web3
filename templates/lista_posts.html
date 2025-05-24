@@ -1,4 +1,5 @@
- {% load static %}
+{% comment %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -14,7 +15,7 @@
     <link rel="stylesheet" href="{% static 'css/cabecalho.css' %}">
 </head>
 <body>
-    {% comment %} Cabeçalho {% endcomment %}
+    {% comment %} Cabeçalho 
     <header id="header">
         <div class="logo">
             <img src="{% static 'Imagens/Logo.jpg' %}" alt="Logo" width="110" height="110">
@@ -33,7 +34,7 @@
         </nav>
     </header>
 
-    {% comment %} Banner {% endcomment %}
+    {% comment %} Banner 
     <section class="banner">
         <div class="banner-conteudo">
           <h1>Bem-vindo à Federação Fluminense de Capoeira</h1>
@@ -41,10 +42,10 @@
         </div>
     </section>
     
-    {% comment %} Feed {% endcomment %}
+    {% comment %} Feed
   <div class="feed">
     {% for post in posts %}
-    {% comment %} Post em si {% endcomment %}
+    {% comment %} Post em si
       <div class="post-card">
         <div class="post-author">
             <img src="{% static 'Imagens/Logo.jpg' %}" alt="Avatar" class="post-avatar">
@@ -69,7 +70,7 @@
     {% endfor %}
   </div>
 
-  {% comment %} Rodape {% endcomment %}
+  {% comment %} Rodape {
   <footer>
     <div class="logo2">
         <img src="{% static 'Imagens/Logo2.jpg' %}" alt="Logo" width="85" height="80">
@@ -106,4 +107,5 @@
 
 <script src="{% static 'js/script.js' %}"></script>
 </body>
-</html>
+</html> 
+{% endcomment %}
