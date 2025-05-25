@@ -85,17 +85,17 @@
   text-align: center;
 }
 
-
-
-
+/* MENSAGEM DE ALERTA */
 
 .alerta, .sucesso {
     background-color:rgb(250, 208, 212);
     color:rgb(155, 40, 51);
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid rgb(250, 191, 197);
+    padding: 15px;
+    margin: -30px 40px;
+    border: 2px solid rgb(250, 191, 197);
     border-radius: 5px;
+    max-width: 500px;
+    text-align: center;
 }
 
 .sucesso{
