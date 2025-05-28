@@ -22,6 +22,8 @@ from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 from voluntario import views
 
+
+
 urlpatterns = [
     #admin
     path('admin/', admin.site.urls),
@@ -35,9 +37,9 @@ urlpatterns = [
     # formulario
     path('voluntario/', views.voluntario, name='voluntario'),
     # Eventos
-    path('eventos/', views.eventos, name='eventos'),
+    path('eventos/', include('evento.urls')),
     # Postagens
-    path('postagens/', views.postagens, name='postagens'),
+    path('postagens/', include('evento.urlPostagem')),
     # Politica
     path('politica/', views.politica, name='politica'),
     # # Pagina de postagens

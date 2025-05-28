@@ -10,7 +10,6 @@
   <link rel="stylesheet" href="{% static 'css/cabecalho.css' %}" />
   <link rel="stylesheet" href="{% static 'css/rodape.css' %}" />
   <link rel="stylesheet" href="{% static 'css/eventos.css' %}">
-  <link rel="stylesheet" href="{% static 'css/postagens.css' %}" />
   <link rel="stylesheet" href="{% static 'css/posts.css' %}">
 
 </head>
@@ -44,11 +43,13 @@
             <span class="author-name">Federação Fluminense de Capoeira</span>
       </div>
         <div class="img1">
-          <img src="{{ post.imagem.url }}" class="img-card" alt="{{ post.titulo }}">
+          <img src="{% static 'Imagens/imagem_evento.png'%}" class="img-card" alt="{{ post.titulo }}">
         </div>
         <div class="texto-card1">
-          <h2>{{ post.titulo }}</h2>
-            <p class="texto-expansivel">{{ post.legenda }}</p>
+          <h2>{{ post.nome }}</h2>
+            <p class="texto-expansivel">Data do evento: {{ post.data }}</p>
+            <p class="texto-expansivel">Local: {{ post.local }}</p>
+            <p class="texto-expansivel">Descrição:<br>{{ post.descricao }}</p>
             <button class="btn-ver-mais" onclick="expandirTexto(this)">Ver mais</button>
         </div>
       </div>
