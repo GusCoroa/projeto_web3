@@ -15,6 +15,30 @@ from reportlab.lib.utils    import ImageReader
 from django.utils.text import slugify
 
 
+#função pra alinhar texto
+def texto_justificado(char, texto, x, y, max_width, max_height, font="Helvetica", size=12):
+    char.setFont(font, size)
+    max_chars  = int(max_width / 5)
+    lines = textwrap.wrap(texto, max_chars) or ["–"]
+    for line in lines:
+        words = line.split()
+        if len(words) == 1:
+            char.drawString(x, y, line)
+        else:
+            total_w = sum(c.stringWidth(w, font, size) for w in words)
+            gaps    = len(words) - 1
+            extra   = (max_width - total_w) / gaps
+            pos     = x
+            for w in words:
+                char.drawString(pos, y, w)
+                pos += char.stringWidth(w, font, size) + extra
+        y -= max_height
+        if y < max_height:
+            char.showPage()
+            char.setFont(font, size)
+            y = char._pagesize[1] - max_height
+    return y
+
 
 class ExportPdfMixin:
     change_form_template = 'admin/export_pdf_change_form.html'
@@ -55,8 +79,9 @@ class ExportPdfMixin:
         p.setFont("Helvetica", 12)
         # quantos chars cabem na descrição
         max_width      = 600
-        avg_char_width = p.stringWidth("M", "Helvetica", 12)
-        max_chars      = int(max_width / avg_char_width)
+        # avg_char_width = p.stringWidth("M", "Helvetica", 12)
+        # max_chars      = int(max_width / avg_char_width)
+        max_chars      = int(max_width / 10)
 
         all_fields = list(self.model._meta.fields) + list(self.model._meta.many_to_many)
         for field in all_fields:
@@ -69,9 +94,19 @@ class ExportPdfMixin:
             # 2) monta lista de linhas pra esse campo
             if field.many_to_many:
                 lines = [f"• {str(i)}" for i in getattr(obj, field.name).all()] or ["–"]
+            
             elif field.name == "descricao":
-                raw   = getattr(obj, field.name) or ""
-                lines = textwrap.wrap(raw, max_chars) or ["–"]
+                raw = getattr(obj, field.name) or ""
+                
+                y = texto_justificado(p, raw,col2_x, y - line_height, width - col2_x - margin, line_height, font="Helvetica", size=12)
+                
+                y -= line_height/2
+                
+                if y < margin:
+                    p.showPage()
+                    y = height - margin
+                continue   # pula o desenho padrão abaixo
+            
             else:
                 raw   = getattr(obj, field.name)
                 lines = [str(raw)] if raw is not None else ["–"]
