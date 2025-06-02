@@ -12,6 +12,7 @@ class Evento (models.Model):
     descricao = models.TextField("Descrição")
     data = models.DateField("Data do Evento")
     local = models.CharField("Local",max_length = 50)
+    imagem = models.ImageField(upload_to='posts/', null=True, blank=True)
 
     gerente = models.ForeignKey(
         Voluntario,

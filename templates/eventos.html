@@ -43,7 +43,11 @@
             <span class="author-name">Federação Fluminense de Capoeira</span>
       </div>
         <div class="img1">
+          {%if post.imagem %}
+          <img src="{{ post.imagem.url }}" class="img-card" alt="{{ post.titulo }}">
+          {% else %}
           <img src="{% static 'Imagens/imagem_evento.png'%}" class="img-card" alt="{{ post.titulo }}">
+          {% endif %}
         </div>
         <div class="texto-card1">
           <h2>{{ post.nome }}</h2>
